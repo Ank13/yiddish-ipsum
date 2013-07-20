@@ -30,8 +30,8 @@ module Sayings
 
   def yiddish_with_translation
     random_saying.
-    # replace tab with space & end with space
-    sub(/\t/, ' ') + ' '
+    # separate english and yiddish into array
+    split("\t")
   end
 
 end
@@ -52,7 +52,8 @@ if $0 == __FILE__
     when "yiddish"
       print Sayings.yiddish_saying
     else
-      print Sayings.yiddish_with_translation
+      saying = Sayings.yiddish_with_translation
+      print "#{saying.last} #{saying.first} "
     end
   end
   puts
