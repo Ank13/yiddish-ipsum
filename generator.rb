@@ -34,6 +34,27 @@ module Sayings
     split("\t")
   end
 
+  def yipsum(args)
+    length = args.fetch(:length).to_i
+    language = args.fetch(:language)
+    yipsum_block = []
+    # retrieve the requested number of phrases
+    length.times do
+      # retrieve in the requested language
+      case language
+      when "english"
+        yipsum_block << Sayings.english_saying
+      when "yiddish"
+        yipsum_block <<  Sayings.yiddish_saying
+      else
+        saying = Sayings.yiddish_with_translation
+        yipsum_block <<  "#{saying.last} #{saying.first} "
+      end
+    end
+    # join retrieved phrases into one string
+    yipsum_block.join('')
+  end
+
 end
 
 
@@ -45,17 +66,6 @@ if $0 == __FILE__
   puts "English, Yiddish, or both?"
   language = gets.chomp.downcase
 
-  lines_requested.times do
-    case language
-    when "english"
-      print Sayings.english_saying
-    when "yiddish"
-      print Sayings.yiddish_saying
-    else
-      saying = Sayings.yiddish_with_translation
-      print "#{saying.last} #{saying.first} "
-    end
-  end
-  puts
+  puts Sayings.yipsum({language: language, length: lines_requested})
 
 end
