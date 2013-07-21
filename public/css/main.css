@@ -1,11 +1,42 @@
+body{
+  background-color: #E7BD83;
+}
 
-h3 {
-  font-size: 20px;
+h1, h2, h3, h4 {
+  font-family: 'Fugaz One', cursive;
 }
 
 .container {
-  background: #DCDAE8;
-  margin: 30px auto;
+  background: #60B9CE;
+  margin: auto;
+  margin-top: 20px;
   padding: 20px;
-  width: 70%;
+  width: 80%;
+  color: black;
+  font-family: 'Fauna One', serif;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.regular-button{
+  border-radius: 5px;
+  /*font-family: 'Fugaz One', cursive;*/
+  background-color: black;
+  color: white;
+  margin: 10px 0;
+}
+
+form {
+  margin: 40px 0;
+}
+
+.form-element{
+  margin: 10px 0;
+}
+
+.small{
+  font-family: 'Fauna One', serif;
+  font-size: 10px;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
 }
