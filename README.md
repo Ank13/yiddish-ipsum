@@ -1,7 +1,8 @@
 # Yiddish Ipsum
 
 WIP...
-A small ruby app that will generate Yiddish sayings to use as placeholder text, like Lorem Ipsum.
+A small ruby app that will present Yiddish sayings and offer four possible translations,
+and user can guess the correct answer.
 
 
 ## Deployment
