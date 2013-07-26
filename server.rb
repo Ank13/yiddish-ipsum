@@ -1,5 +1,5 @@
 require 'sinatra'
-require './generator'
+require './multiple-choice'
 require './helpers'
 
 get '/' do

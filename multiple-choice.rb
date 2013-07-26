@@ -69,7 +69,6 @@ if $0 == __FILE__
 
   # display several possible tranlations
   puts choices = Game.answer_choices(line)
-  puts
 
   # prompt user to choose the correct translation
   puts
