@@ -4,13 +4,23 @@ module Game
 
   extend self
 
+  DEFAULT_DATA_FILE = 'sayings3.txt'
+
   SAYINGS = File.read('sayings3.txt').
   # split source file into lines without newline breaks
   lines.map(&:chomp)
 
-  def select_question
+  def parse_data file=File.open(Game::DEFAULT_DATA_FILE, 'r')
+  end
+
+  def random_q_and_a hash
+    random_key = hash.key.sample
+    [random_key, hash[random_key]]
+  end
+
+  def random_question(questions = SAYINGS)
     # select random starting line
-    rand(SAYINGS.length)
+    rand(questions.length)
   end
 
   def question(line)
@@ -63,26 +73,54 @@ module Game
 end
 
 if $0 == __FILE__
-  # choose a saying and print the Yiddish translation
-  line = Game.select_question
-  puts Game.question(line)
 
-  # display several possible tranlations
-  puts choices = Game.answer_choices(line)
+  q_and_a_data =
+    Game.parse_data_file File.open(Game::DEFAULT_DATA_FILE, 'r') # think r is default
 
-  # prompt user to choose the correct translation
-  puts
+  question, correct_answer = Game.random_q_and_a q_and_a_data
+  all_answers = q_and_a_data.values
+  incorrect_answers = Game.random_incorrect_answers 3, correct_answer, all_answers
+
+  puts question
+  answers = [correct_answer] + incorrect_answers
+  answers = answers.shuffle
+
+  choices = Game.choices_from_answers answers # [[:a, "some answer"], [:b, ""]]
+  puts Game.format_choices choices
+
   puts "Enter the letter of the correct translation"
-  user_answer = gets.chomp
-  puts
+  user_choice = Game.parse_choice gets.chomp # "   A   " => :a
 
-  # evaluate if user was correct
-  case Game.evaluate(user_answer, line, choices)
-  when nil
+  case Game.evaluate user_choice, correct_answer, choices
+  when :invalid
     puts "That's not a valid selection"
-  when true
+  when :correct
     puts "Correct!"
-  when false
+  when :incorrect
     puts "Wrong, the correct answer was '#{Game.answer(line)}'"
   end
+
+  # choose a saying and print the Yiddish translation
+  # question = Game.random_question
+
+  # puts Game.question(question)
+
+  # # display several possible tranlations
+  # puts choices = Game.answer_choices(question)
+
+  # # prompt user to choose the correct translation
+  # puts
+  # puts "Enter the letter of the correct translation"
+  # user_answer = gets.chomp
+  # puts
+
+  # # evaluate if user was correct
+  # case Game.evaluate(user_answer, question, choices)
+  # when nil
+  #   puts "That's not a valid selection"
+  # when true
+  #   puts "Correct!"
+  # when false
+  #   puts "Wrong, the correct answer was '#{Game.answer(line)}'"
+  # end
 end

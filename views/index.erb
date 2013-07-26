@@ -1,30 +1,19 @@
-<div class="container">
-    <h2>Generate some Yiddish Ipsum</h2>
-
-    <form action="/nu" method="post">
-
-      <label for="length" class="form-element">How many phrases do you want?</label><br>
-      <input type="range" name="length" min="1" max="25" step="1" value="12" onchange="rangevalue.value=value" class="form-element">
-      <output id="rangevalue">12</output>
-      <br>
-
-      <label for="language" class="form-element">In which language?</label><br>
-      <select name="language" class="form-element">
-        <option value="both" selected>Yiddish with English translation</option>
-        <option value="english">English translation</option>
-        <option value="yiddish">Yiddish</option>
-      </select><br>
-
-      <input type="submit" value="Alright, submit it already" class="regular-button">
-
-    </form>
-
-  </div>
-
+<div class="header">
+  <h2>Nu, what's it mean?</h2>
+</div>
 
 <div class="container">
-    <h2>As we say... </h2>
-    <p><%= @saying.last %></p>
-    <p><%= @saying.first %></p>
-    <span class="small">(new phrase with each refresh)</span>
+  <h3> <%= @question %> </h3>
+
+  <form action="/nu" method="post">
+
+      <% @answers.each do |answer|  %>
+        <p><%= answer %></p>
+      <% end %>
+
+    <input type="submit" value="submit" class="regular-button">
+
+  </form>
+  <!-- TODO: skip question button-->
+
 </div>

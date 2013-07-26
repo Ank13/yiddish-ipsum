@@ -1,6 +1,6 @@
 body{
-  background-color: lightgray;
-  background-image: url('../images/witewall_3.png');
+  background-color: #27ae60;
+  /*background-image: url('../images/witewall_3.png');*/
 }
 
 h1, h2, h3, h4 {
@@ -8,14 +8,25 @@ h1, h2, h3, h4 {
 }
 
 .container {
-  background: #dee4fa;
+  /*background: white;*/
+  background-image: url('../images/witewall_3.png');
   margin: auto;
-  margin-top: 20px;
+  margin-top: 5%;
   padding: 20px;
-  width: 80%;
+  width: 70%;
   color: black;
   font-family: 'Fauna One', serif;
-  box-shadow: 10px 10px 5px #888888;
+  /*box-shadow: 10px 10px 5px #888888;*/
+}
+
+.header {
+  margin: auto;
+  margin-top: 5%;
+  /*width: 70%;*/
+  text-align; center;
+  color: white;
+  font-size: 20px;
+  font-family: 'Fauna One', serif;
 }
 
 .regular-button{
