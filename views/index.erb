@@ -3,17 +3,26 @@
 </div>
 
 <div class="container">
-  <h3> <%= @question %> </h3>
+  <% if @result %>
+    <h3>Your previous guess was:
+      <% if @result == :correct %>
+        "Correct!"
+      <% end %>
+      <% if @result == :incorrect %>
+        "Wrong, the correct answer was '#{@previous_answer}!"
+      <% end %>
+    </h3>
+  <% end %>
 
+  <h3> <%= @question %> </h3>
   <form action="/nu" method="post">
 
-      <% @answers.each do |answer|  %>
-        <p><%= answer %></p>
-      <% end %>
+    <% @answers.each do |answer|  %>
+      <input type="radio" name="user_choice" value="<%=answer[0]%>"><%= answer[1]%><br>
+    <% end %>
 
     <input type="submit" value="submit" class="regular-button">
-
   </form>
   <!-- TODO: skip question button-->
-
 </div>
+
