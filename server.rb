@@ -20,14 +20,12 @@ end
 
 post '/evaluate_question' do
   body_params = JSON.parse request.body.read
-
   #take the user's inut
   user_choice = Game.parse_choice (body_params["user_choice"])
   question = body_params["question"]
-  choices = body_params["choices"].each {|choice_pair| choice_pair[0] = choice_pair[0].to_sym}
+  choices = body_params["choices"].map {|choice_pair| [choice_pair[0].to_sym, choice_pair[1]] }
   # id the correct answer
   correct_answer = Q_AND_A_DATA[question]
-
   # and evaluate against the correct answer
   result = Game.evaluate user_choice, correct_answer, choices
   # send result as JSON object
