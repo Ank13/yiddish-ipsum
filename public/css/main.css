@@ -4,21 +4,22 @@ body{
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Fugaz One', cursive;
+  /*font-family: 'Fugaz One', cursive;*/
+  font-family: 'Finger Paint', cursive
 }
 
 .container {
-  /*background: white;*/
-  background-image: url('../images/witewall_3.png');
   margin: auto;
   margin-top: 2%;
   padding: 20px;
   width: 70%;
-  color: black;
+  color: white;
   font-family: 'Fauna One', serif;
-  /*box-shadow: 10px 10px 5px #888888;*/
 }
 
+input {
+  margin: 5px;
+}
 .header {
   margin: 0 auto;
   padding: 0;
