@@ -1,36 +1,38 @@
 require 'sinatra'
 require './multiple-choice'
 require './helpers'
-
-set :sessions, true
+require 'json'
 
 Q_AND_A_DATA = Game.parse_data_file
 
 get '/' do
-  @result = session[:result] if session[:result]
-  @previous_answer = session[:correct_answer] if session[:result]
-  # parse the file of sayings
-  # read the session and the correct answer
+  # set the question and correct answer
   @question, correct_answer = Game.random_q_and_a Q_AND_A_DATA
-  session[:correct_answer] = correct_answer
-  # get array of all possible answers
-  all_answers = Q_AND_A_DATA.values
   # buils array of specified number of incorrect answers
-  incorrect_answers = Game.random_incorrect_answers 2, correct_answer, all_answers
+  incorrect_answers = Game.random_incorrect_answers 3, correct_answer, Q_AND_A_DATA.values
   # puts correct and incorrect answers into one array
   choices = ([correct_answer] + incorrect_answers).shuffle
   # returns array pairs of answers with letters
   @answers = Game.choices_from_answers choices
-  session[:choices] = @answers
-  erb :index
+  erb :index #, :locals =>
 end
 
-post '/nu' do
-  # get the letter of the user selection
-  user_choice = Game.parse_choice (params[:user_choice])
-  # evaluates user selection, choices, against the correct answer
-  session[:result] = Game.evaluate user_choice, session[:correct_answer], session[:choices]
-  redirect '/'
+
+post '/evaluate_question' do
+  body_params = JSON.parse request.body.read
+
+  #take the user's inut
+  user_choice = Game.parse_choice (body_params["user_choice"])
+  question = body_params["question"]
+  choices = body_params["choices"].each {|choice_pair| choice_pair[0] = choice_pair[0].to_sym}
+  # id the correct answer
+  correct_answer = Q_AND_A_DATA[question]
+
+  # and evaluate against the correct answer
+  result = Game.evaluate user_choice, correct_answer, choices
+  # send result as JSON object
+  content_type :json
+  {'result' => result, 'question' => question,'correct' => correct_answer}.to_json
 end
 
 
