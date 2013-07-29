@@ -4,16 +4,17 @@ require './helpers'
 
 set :sessions, true
 
+Q_AND_A_DATA = Game.parse_data_file
+
 get '/' do
   @result = session[:result] if session[:result]
   @previous_answer = session[:correct_answer] if session[:result]
   # parse the file of sayings
-  q_and_a_data = Game.parse_data_file
   # read the session and the correct answer
-  @question, correct_answer = Game.random_q_and_a q_and_a_data
+  @question, correct_answer = Game.random_q_and_a Q_AND_A_DATA
   session[:correct_answer] = correct_answer
   # get array of all possible answers
-  all_answers = q_and_a_data.values
+  all_answers = Q_AND_A_DATA.values
   # buils array of specified number of incorrect answers
   incorrect_answers = Game.random_incorrect_answers 2, correct_answer, all_answers
   # puts correct and incorrect answers into one array
