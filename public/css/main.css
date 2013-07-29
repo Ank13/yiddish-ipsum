@@ -11,7 +11,7 @@ h1, h2, h3, h4 {
   /*background: white;*/
   background-image: url('../images/witewall_3.png');
   margin: auto;
-  margin-top: 5%;
+  margin-top: 2%;
   padding: 20px;
   width: 70%;
   color: black;
@@ -20,15 +20,20 @@ h1, h2, h3, h4 {
 }
 
 .header {
-  margin: auto;
-  margin-top: 5%;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 3%;
   /*width: 70%;*/
   color: white;
   font-size: 20px;
   font-family: 'Fauna One', serif;
 }
 
-.header
+.header h2 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 
 .regular-button{
   border-radius: 5px;

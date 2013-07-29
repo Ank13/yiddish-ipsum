@@ -3,9 +3,13 @@ require './multiple-choice'
 require './helpers'
 
 get '/' do
-  @line = Game.select_question
-  @question = Game.question(@line)
-  @answers = Game.answer_choices(@line)
+  q_and_a_data = Game.parse_data_file
+  @question, @correct_answer = Game.random_q_and_a q_and_a_data
+
+  all_answers = q_and_a_data.values
+  incorrect_answers = Game.random_incorrect_answers 2, @correct_answer, all_answers
+  @answers = [@correct_answer] + incorrect_answers
+
   erb :index
 end
 
