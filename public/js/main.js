@@ -2,13 +2,11 @@ $(document).ready(function(){
 
   $('#next').hide()
 
-  // $gameForm.on('submit', function(event){
   $('.container').on('click', '.game-button' ,function(event){
     event.preventDefault()
 
     var question = JSON.parse($('[data-question]').text())
     var answers = JSON.parse($('[data-answers]').text())
-    var $gameForm = $('#game-form')
 
     // var userChoice = $gameForm.find('[name=user_choice]:checked').val()
     var userChoice = $(this).val()
@@ -27,10 +25,11 @@ $(document).ready(function(){
     })
 
   })
-
-  $('#next').on('click', function(event){
+  // update the question when user clicks "Next"
+  $('.container').on('click', '#next',function(event){
     event.preventDefault()
     $.get('/', function(response){
+      console.log("ajax")
       $('.container').html(response)
       $('#next').hide()
     })
