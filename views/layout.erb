@@ -10,7 +10,12 @@
 
   <!-- CSS Style Sheet -->
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <!-- Responsive CSS with media queries-->
+    <link rel="stylesheet" type="text/css" href="../css/mobile.css" media="screen, handheld" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" media="screen and (min-width: 40.5em)" />
+    <!--[if (lt IE 9)&(!IEMobile)]>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <![endif]-->
 
   <!-- JavaScript -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
