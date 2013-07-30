@@ -1,6 +1,7 @@
 h1, h2 {
   font-family: 'Finger Paint', cursive;
   font-size: 1.5em;
+  margin: 5px 0 5px 0;
 }
 
 h3, h4 {
@@ -19,6 +20,16 @@ h3, h4 {
 .game-button{
   width: 600px;
   height: auto;
+  margin-top: 8px;
+}
+
+.regular-button{
+  margin: 10px 0;
+  width: 80px;
+}
+
+form {
+  margin: 20px 0;
 }
 
 /* Footer */

@@ -6,12 +6,14 @@ h1, h2 {
   font-family: 'Finger Paint', cursive;
   font-size: 1.25em;
   margin: .5em 0 0 0;
+  padding: 0px;
 }
 
 h3, h4 {
   font-family: Arial, serif;
   font-size: 1em;
   margin: .5em 0 0 0;
+  padding: 0px
 }
 
 .container {
@@ -30,7 +32,8 @@ h3, h4 {
 }
 
 form {
-  margin: 20px 0;
+  margin: 10px 0 0 0;
+  padding: 0px;
 }
 
 .game-button{
@@ -50,7 +53,13 @@ form {
   background-color: black;
   color: white;
   margin: 10px 0;
-  width: 80px;
+  padding: 0;
+  width: 40%;
+}
+
+#results{
+  margin: 0;
+  padding: 0;
 }
 
 /* Footer */
@@ -58,6 +67,7 @@ form {
 footer {
   width: 80%;
   text-align: center;
+  margin-top: 30px;
   margin-bottom: 30px;
   color: #fff;
   font-size: 15px;
