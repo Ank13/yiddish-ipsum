@@ -29,7 +29,6 @@ $(document).ready(function(){
   $('.container').on('click', '#next',function(event){
     event.preventDefault()
     $.get('/', function(response){
-      console.log("ajax")
       $('.container').html(response)
       $('#next').hide()
     })
