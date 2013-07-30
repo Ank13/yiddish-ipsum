@@ -67,7 +67,7 @@ form {
 footer {
   width: 80%;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 30px;
   color: #fff;
   font-size: 15px;
@@ -81,4 +81,13 @@ footer a {
   color: #fff;
   transition: background-color 0.5s ease;
   font-weight: 500;
+}
+
+.credits {
+  color: #95a5a6;
+  font-size: 12px;
+  font-style: italic;
+  margin: 0;
+  margin-top: 1em;
+  padding: 0 0 5px 0;
 }
