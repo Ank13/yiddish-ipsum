@@ -1,11 +1,7 @@
-body{
-  background-color: #34495e;
-}
-
 h1, h2 {
-  font-family: 'Finger Paint', cursive
+  font-family: 'Finger Paint', cursive;
+  font-size: 1.5em;
 }
-
 
 h3, h4 {
   font-family: 'Fauna One', serif;
@@ -20,88 +16,12 @@ h3, h4 {
   font-family: 'Fauna One', serif;
 }
 
-input {
-  margin: 5px 8px 0 0;
-}
-.header {
-  margin: 0 auto;
-  padding: 0;
-  margin-top: 3%;
-  /*width: 70%;*/
-  color: white;
-  font-size: 20px;
-  font-family: 'Fauna One', serif;
-}
-
-.header h2 {
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.instructions {
-  color: #95a5a6;
-  font-size: 14px;
-  font-style: italic;
-  margin: 0;
-  padding: 0 0 5px 0;
-}
-
-.regular-button{
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  margin: 10px 0;
-  width: 80px;
-}
-
 .game-button{
   width: 600px;
-  border: 1px solid #95a5a6;
-  border-radius: 5px;
-  font-size: 15px;
-  text-align: left;
-  background-color: #34495e;
-  color: white;
-  margin-bottom: 3px;
-}
-
-form {
-  margin: 20px 0;
-}
-
-.form-element{
-  margin: 10px 0;
-}
-
-.small{
-  font-family: 'Fauna One', serif;
-  font-size: 10px;
-  font-style: italic;
-  margin: 0;
-  padding: 0;
 }
 
 
 /* Footer */
-
-footer {
-  width: 80%;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 300;
-}
-
-footer a {
-  background: #2c3e50;
-  text-decoration: none;
-  padding: 1px 7px;
-  color: #fff;
-  transition: background-color 0.5s ease;
-  font-weight: 500;
-}
 
 footer a:hover {
   background: #fff;

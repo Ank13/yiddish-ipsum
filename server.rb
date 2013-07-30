@@ -17,7 +17,6 @@ get '/' do
   erb :index #, :locals =>
 end
 
-
 post '/evaluate_question' do
   body_params = JSON.parse request.body.read
   #take the user's inut

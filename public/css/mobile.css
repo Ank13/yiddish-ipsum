@@ -1,3 +1,72 @@
 body{
-  background-color: red;
+  background-color: #34495e;
+}
+
+h1, h2 {
+  font-family: 'Finger Paint', cursive;
+  font-size: 1.25em;
+}
+
+h3, h4 {
+  font-family: Arial, serif;
+  font-size: 1em;
+  margin: .5em 0 0 0;
+}
+
+.container {
+  width: 94%;
+  margin: auto;
+  color: white;
+  font-family: Arial, serif;
+}
+
+.instructions {
+  color: #95a5a6;
+  font-size: 14px;
+  font-style: italic;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+
+form {
+  margin: 20px 0;
+}
+
+.game-button{
+  width: 100%;
+  border: 1px solid #95a5a6;
+  border-radius: 5px;
+  font-size: 1em;
+  text-align: left;
+  background-color: #34495e;
+  color: white;
+  margin-bottom: 3px;
+}
+
+.regular-button{
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  margin: 10px 0;
+  width: 80px;
+}
+
+/* Footer */
+
+footer {
+  width: 80%;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+footer a {
+  background: #2c3e50;
+  text-decoration: none;
+  padding: 1px 7px;
+  color: #fff;
+  transition: background-color 0.5s ease;
+  font-weight: 500;
 }
