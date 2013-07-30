@@ -2,14 +2,13 @@ $(document).ready(function(){
 
   $('#next').hide()
 
-  var question = JSON.parse($('[data-question]').text())
-  var answers = JSON.parse($('[data-answers]').text())
-
-  var $gameForm = $('#game-form')
-
   // $gameForm.on('submit', function(event){
   $('.container').on('click', '.game-button' ,function(event){
     event.preventDefault()
+
+    var question = JSON.parse($('[data-question]').text())
+    var answers = JSON.parse($('[data-answers]').text())
+    var $gameForm = $('#game-form')
 
     // var userChoice = $gameForm.find('[name=user_choice]:checked').val()
     var userChoice = $(this).val()
@@ -33,6 +32,7 @@ $(document).ready(function(){
     event.preventDefault()
     $.get('/', function(response){
       $('.container').html(response)
+      $('#next').hide()
     })
 
   })
