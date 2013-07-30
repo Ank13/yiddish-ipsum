@@ -41,6 +41,7 @@ input {
 }
 
 .instructions {
+  color: #95a5a6;
   font-size: 14px;
   font-style: italic;
   margin: 0;
@@ -52,11 +53,12 @@ input {
   background-color: black;
   color: white;
   margin: 10px 0;
+  width: 80px;
 }
 
 .game-button{
   width: 600px;
-  border: 1px dotted ##95a5a6;
+  border: 1px solid #95a5a6;
   border-radius: 5px;
   font-size: 15px;
   text-align: left;

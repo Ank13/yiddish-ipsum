@@ -22,7 +22,7 @@ $(document).ready(function(){
       contentType: 'application/json',
       data: JSON.stringify(data),
       success: function(response){
-        $('#results').html(response.result + '!<br><br>' + response.question  + ' :<br>' + response.correct )
+        $('#results').html(response.result + '!<br><br>' + response.question  + '<br>' + response.correct )
         $('#next').show()
       }
     })

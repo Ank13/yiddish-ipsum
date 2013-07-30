@@ -6,7 +6,7 @@
 
   <h3><span id='question'><%= @question %></span></h3>
   <form action="/evaluate_question" method="post" id="game-form">
-    <p class="instructions">Click one:</p>
+    <p class="instructions">Click the best translation:</p>
     <% @answers.each do |answer|  %>
       <button type="submit" name="user_choice" value="<%=answer[0]%>" class="game-button"><%= answer[1]%></button><br>
     <% end %>
