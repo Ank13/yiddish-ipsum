@@ -1,23 +1,8 @@
 <h1 id="header">Yiddish Sayings Game</h1>
 
 <div class="container">
-  <script data-question type="text/json"><%= @question.to_json %></script>
-  <script data-answers  type="text/json"><%= @answers.to_json  %></script>
-
-  <h3><span id='question'><%= @question %></span></h3>
-  <form action="/evaluate_question" method="post" id="game-form">
-    <p class="instructions">Click the best translation:</p>
-    <% @answers.each do |answer|  %>
-      <button type="submit" name="user_choice" value="<%=answer[0]%>" class="game-button"><%= answer[1]%></button><br>
-    <% end %>
-
-    <a href="/"><button type="button" id="next" class="regular-button">Next</button></a>
-  </form>
-
-  <div id="results"></div>
-
+  <%= erb :_question, :layout => false %>
 </div>
-
 
 <footer>Created by <a href="https://github.com/Ank13">Ank13</a>
 

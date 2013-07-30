@@ -8,7 +8,7 @@ $(document).ready(function(){
   var $gameForm = $('#game-form')
 
   // $gameForm.on('submit', function(event){
-  $('.game-button').on('click', function(event){
+  $('.container').on('click', '.game-button' ,function(event){
     event.preventDefault()
 
     // var userChoice = $gameForm.find('[name=user_choice]:checked').val()
@@ -25,6 +25,14 @@ $(document).ready(function(){
         $('#results').html(response.result + '!<br><br>' + response.question  + '<br>' + response.correct )
         $('#next').show()
       }
+    })
+
+  })
+
+  $('#next').on('click', function(event){
+    event.preventDefault()
+    $.get('/', function(response){
+      $('.container').html(response)
     })
 
   })

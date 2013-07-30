@@ -12,9 +12,15 @@ get '/' do
   incorrect_answers = Game.random_incorrect_answers 3, correct_answer, Q_AND_A_DATA.values
   # puts correct and incorrect answers into one array
   choices = ([correct_answer] + incorrect_answers).shuffle
+  # trims choices to avoid overunning button size
+  trimmed_choices = choices.map{|choice| choice[0..93]}
   # returns array pairs of answers with letters
-  @answers = Game.choices_from_answers choices
-  erb :index #, :locals =>
+  @answers = Game.choices_from_answers trimmed_choices
+  if request.xhr?
+    erb :_question, :layout => false
+  else
+    erb :index
+  end
 end
 
 post '/evaluate_question' do
@@ -22,7 +28,7 @@ post '/evaluate_question' do
   #take the user's inut
   user_choice = Game.parse_choice (body_params["user_choice"])
   question = body_params["question"]
-  choices = body_params["choices"].map {|choice_pair| [choice_pair[0].to_sym, choice_pair[1]] }
+  choices = body_params["choices"].map {|choice_pair| [choice_pair[0].to_sym, choice_pair[1]]}
   # id the correct answer
   correct_answer = Q_AND_A_DATA[question]
   # and evaluate against the correct answer
