@@ -19,8 +19,7 @@ h3, h4 {
 
 .game-button{
   width: 600px;
-  height: auto;
-  margin-top: 8px;
+  height: 3em;
 }
 
 .regular-button{

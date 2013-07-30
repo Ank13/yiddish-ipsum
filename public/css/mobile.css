@@ -2,6 +2,17 @@ body{
   background-color: #34495e;
 }
 
+#header {
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
 h1, h2 {
   font-family: 'Finger Paint', cursive;
   font-size: 1.25em;
@@ -19,6 +30,7 @@ h3, h4 {
 .container {
   width: 94%;
   margin: auto;
+  margin-top: 35px;
   color: white;
   font-family: Arial, serif;
 }
