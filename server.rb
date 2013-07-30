@@ -27,7 +27,7 @@ post '/evaluate_question' do
   # id the correct answer
   correct_answer = Q_AND_A_DATA[question]
   # and evaluate against the correct answer
-  result = Game.evaluate user_choice, correct_answer, choices
+  result = Helpers.titleize(Game.evaluate user_choice, correct_answer, choices)
   # send result as JSON object
   content_type :json
   {'result' => result, 'question' => question,'correct' => correct_answer}.to_json

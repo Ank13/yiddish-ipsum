@@ -9,4 +9,16 @@ module Helpers
     hash
   end
 
+  def titleize(words)
+    words = words.to_s.strip.downcase.split(' ')
+    words.each do |word|
+      word[0] = word[0].upcase
+    end
+    words.join(' ')
+  end
+end
+
+if $0 == __FILE__
+  p Helpers.titleize("george washington")
+  p Helpers.titleize(:correct)
 end

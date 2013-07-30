@@ -7,14 +7,14 @@ $(document).ready(function(){
 
   var $gameForm = $('#game-form')
 
-  $gameForm.on('submit', function(event){
+  // $gameForm.on('submit', function(event){
+  $('.game-button').on('click', function(event){
     event.preventDefault()
 
-    var userChoice = $gameForm.find('[name=user_choice]:checked').val()
+    // var userChoice = $gameForm.find('[name=user_choice]:checked').val()
+    var userChoice = $(this).val()
 
     var data = { question: question, choices: answers, user_choice: userChoice }
-
-    console.log(data)
 
     $.ajax({
       type: "POST",
@@ -22,7 +22,7 @@ $(document).ready(function(){
       contentType: 'application/json',
       data: JSON.stringify(data),
       success: function(response){
-        $('.container').append(response.result + '!  <br>' + response.correct + '<br>is<br>' + response.question)
+        $('#results').html(response.result + '!<br><br>' + response.question  + ' :<br>' + response.correct )
         $('#next').show()
       }
     })
