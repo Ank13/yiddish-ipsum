@@ -6,21 +6,14 @@ require 'json'
 Q_AND_A_DATA = Game.parse_data_file
 
 get '/' do
-  # set the question and correct answer
-  @question, correct_answer = Game.random_q_and_a Q_AND_A_DATA
-  # buils array of specified number of incorrect answers
-  incorrect_answers = Game.random_incorrect_answers 3, correct_answer, Q_AND_A_DATA.values
-  # puts correct and incorrect answers into one array
-  choices = ([correct_answer] + incorrect_answers).shuffle
-  # trims choices to avoid overunning button size
-  trimmed_choices = choices.map{|choice| choice[0..93]}
-  # returns array pairs of answers with letters
-  @answers = Game.choices_from_answers trimmed_choices
-  if request.xhr?
-    erb :_question, :layout => false
-  else
-    erb :index
-  end
+  @question, @answers = question_and_choices
+  erb :index
+end
+
+get '/question' do
+  @question, @answers = question_and_choices
+  headers['Cache-Control'] = 'no-cache'
+  erb :_question, :layout => false
 end
 
 post '/evaluate_question' do
@@ -38,5 +31,14 @@ post '/evaluate_question' do
   {'result' => result, 'question' => question,'correct' => correct_answer}.to_json
 end
 
-
-
+def question_and_choices
+  # set the question and correct answer
+  question, correct_answer = Game.random_q_and_a Q_AND_A_DATA
+  # buils array of specified number of incorrect answers
+  incorrect_answers = Game.random_incorrect_answers 3, correct_answer, Q_AND_A_DATA.values
+  # puts correct and incorrect answers into one array
+  choices = ([correct_answer] + incorrect_answers).shuffle
+  # returns array pairs of answers with letters
+  answers = Game.choices_from_answers choices
+  [question, answers]
+end

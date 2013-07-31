@@ -28,7 +28,7 @@ $(document).ready(function(){
   // update the question when user clicks "Next"
   $('.container').on('click', '#next',function(event){
     event.preventDefault()
-    $.get('/', function(response){
+    $.get('/question', function(response){
       $('.container').html(response)
       $('#next').hide()
     })
