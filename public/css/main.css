@@ -17,6 +17,14 @@ h3, h4 {
   font-family: 'Fauna One', serif;
 }
 
+.results {
+  margin: 1% auto;
+  padding: 20px;
+  width: 80%;
+  color: white;
+  font-family: 'Fauna One', serif;
+}
+
 .game-button{
   width: 600px;
   height: 3em;

@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
-  $('#next').hide()
+  // get their current score
+  var answeredCorrect = parseInt($('[data-answered-correct]').text())
+  var totalAnswered = parseInt($('[data-answered-total]').text())
 
+  // evaluate user choice when they click an answer button
   $('.container').on('click', '.game-button' ,function(event){
     event.preventDefault()
 
@@ -19,18 +22,24 @@ $(document).ready(function(){
       contentType: 'application/json',
       data: JSON.stringify(data),
       success: function(response){
-        $('#results').html(response.result + '!<br><br>' + response.question  + '<br>' + response.correct )
+        $('#results').html(response.result + '!  The translation is:<br><br>' + response.question  + '<br>' + response.correct )
         $('#next').show()
-      }
-    })
 
-  })
-  // update the question when user clicks "Next"
-  $('.container').on('click', '#next',function(event){
-    event.preventDefault()
-    $.get('/question', function(response){
-      $('.container').html(response)
-      $('#next').hide()
+        // if they answered correctly, increase score by 1
+        if (response.result === 'Correct') {
+          answeredCorrect += 1
+          $('[data-answered-correct]').text(answeredCorrect)
+        }
+        // update total answered questions by 1
+        totalAnswered += 1
+        $('[data-answered-total]').text(totalAnswered)
+
+        // load next question
+        $.get('/question', function(response){
+          $('.container').html(response)
+        })
+
+      }
     })
 
   })
